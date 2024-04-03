@@ -9,14 +9,15 @@ rule all:
 
 rule tex:
     input:
-        "src/{docname}.md"
+        "src/{docname}.md",
+        "src/{docname}.bib"
     output:
         BUILD / "{docname}.tex"
     params:
         build_dir = BUILD
     shell:
         """
-        myst build {input} --tex
+        myst build {input[0]} --tex
         cp -r src/_build/exports/{wildcards.docname}_tex/* {params.build_dir}/
         """
 
@@ -27,5 +28,5 @@ rule pdf:
         BUILD / "{docname}.pdf"
     shell:
         """
-        tectonic {input}
+        tectonic {input} --keep-logs --keep-intermediates
         """

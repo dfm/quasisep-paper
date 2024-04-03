@@ -35,6 +35,7 @@ files:
   - template.tex
   - doi.sty
   - dar_abbrvnat.bst
+  - aas_macros.sty
 packages:
   - amsmath
   - amssymb
@@ -44,6 +45,4 @@ packages:
   - marginfix
   - natbib
   - xcolor
-build:
-  engine: "-pdflatex"
 myst: v1
