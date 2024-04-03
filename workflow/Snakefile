@@ -1,0 +1,31 @@
+from pathlib import Path
+
+BUILD = Path("_build")
+
+rule all:
+    input:
+        expand(BUILD / "{docname}.pdf", docname=["quasisep"])
+        # expand(BUILD / "{docname}_tex", docname=["quasisep"])
+
+rule tex:
+    input:
+        "src/{docname}.md"
+    output:
+        BUILD / "{docname}.tex"
+    params:
+        build_dir = BUILD
+    shell:
+        """
+        myst build {input} --tex
+        cp -r src/_build/exports/{wildcards.docname}_tex/* {params.build_dir}/
+        """
+
+rule pdf:
+    input:
+        BUILD / "{docname}.tex"
+    output:
+        BUILD / "{docname}.pdf"
+    shell:
+        """
+        tectonic {input}
+        """

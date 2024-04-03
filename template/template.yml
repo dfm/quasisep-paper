@@ -1,0 +1,49 @@
+jtex: v1
+title: Data Analysis Recipes
+description: LaTeX template based on the Data Analysis Recipes series
+version: 1.0.0
+license: MIT
+source: https://github.com/dfm/myst-dar-template
+thumbnail: ./thumbnail.png
+authors:
+  - name: Dan Foreman-Mackey
+    website: https://github.com/dfm/dar-myst-template
+    affiliations:
+      - Center for Computational Astrophysics, Flatiron Institute
+tags:
+  - paper
+parts:
+  - id: abstract
+    required: true
+    description: >
+      A good abstract will begin with a short description of the problem being
+      addressed, briefly describe the new data or analyses, then briefly states
+      the main conclusion(s) and how they are supported and uncertainties.
+  - id: acknowledgments
+    description: >
+      Who do you want to thank?
+doc:
+  - id: title
+    required: true
+  - id: bibliography
+  - id: authors
+options:
+  - type: boolean
+    id: draft
+    description: Mark the document as draft
+files:
+  - template.tex
+  - doi.sty
+  - dar_abbrvnat.bst
+packages:
+  - amsmath
+  - amssymb
+  - doi
+  - graphicx
+  - hyperref
+  - marginfix
+  - natbib
+  - xcolor
+build:
+  engine: "-pdflatex"
+myst: v1

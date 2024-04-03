@@ -1,0 +1,7 @@
+# pixi environments
+.pixi
+
+_build
+src/_build
+.snakemake
+template/original/

@@ -1,0 +1,76 @@
+\documentclass[10pt]{article}
+
+\usepackage{amsmath}
+\usepackage{amssymb}
+% \usepackage{bm}
+% mathrsfs, amssymb, algorithm, algorithmicx}
+% \usepackage[noend]{algpseudocode}
+\usepackage[dvipsnames]{xcolor}
+\usepackage[hidelinks,
+            colorlinks=true,
+            linkcolor=NavyBlue,
+            citecolor=darkgray,
+            urlcolor=NavyBlue]{hyperref}
+% \usepackage{pifont}
+\usepackage{graphicx}
+\usepackage{doi}
+\usepackage{natbib}
+\usepackage{marginfix}
+
+[- IMPORTS -]
+
+\bibliographystyle{dar_abbrvnat}
+\setcitestyle{round,citesep={,},aysep={}}
+
+% Page layout
+\setlength{\topmargin}{0.0in}
+\setlength{\headheight}{0.0in}
+\setlength{\headsep}{0.0in}
+\setlength{\parindent}{\baselineskip}
+\setlength{\textwidth}{4.3in}
+\setlength{\textheight}{2\textwidth}
+\raggedbottom\sloppy\sloppypar\frenchspacing
+
+\setlength{\marginparsep}{0.15in}
+\setlength{\marginparwidth}{2.7in}
+\newcounter{marginnote}
+\setcounter{marginnote}{0}
+\renewcommand{\footnote}[1]{\refstepcounter{marginnote}\textsuperscript{\themarginnote}\marginpar{\color{darkgray}\raggedright\footnotesize\textsuperscript{\themarginnote}#1}}
+\newcommand{\tfigurerule}{\rule{0pt}{1ex}\\ \rule{\marginparwidth}{0.5pt}\\ \rule{0pt}{0.25ex}}
+\newcommand{\bfigurerule}{\rule{0pt}{0.25ex}\\ \rule{\marginparwidth}{0.5pt}\\ \rule{0pt}{1ex}}
+\renewcommand{\caption}[1]{\parbox{\marginparwidth}{\footnotesize\refstepcounter{figure}\textbf{\figurename~\thefigure}: {#1}}}
+
+\setlength{\oddsidemargin}{0.5\paperwidth}
+\addtolength{\oddsidemargin}{-1.0in}
+\addtolength{\oddsidemargin}{-0.5\textwidth}
+\addtolength{\oddsidemargin}{-0.5\marginparwidth}
+\addtolength{\oddsidemargin}{-0.5\marginparsep}
+
+\begin{document}
+
+\section*{[- doc.title -][# if parts.acknowledgments #]\footnote{[- parts.acknowledgments -]}[# endif #]}
+
+[# for author in doc.authors #]
+\noindent\textbf{[-- author.name --]} \\
+[# if author.affiliations #]{\footnotesize%
+[# for affiliation in author.affiliations #]
+\textsl{[-- affiliation.value.name --]}%
+[# endfor #]
+}[# endif #]
+[# if not loop.last #]\medskip[# endif #]
+[# endfor #]
+
+[# if parts.abstract #]
+\paragraph{Abstract:}
+[-- parts.abstract --]
+[# endif #]
+
+[- CONTENT -]
+
+[# if doc.bibliography #]
+\clearpage\raggedright
+\bibliography{[- doc.bibliography | join(", ") -]}
+[# endif #]
+
+\end{document}
+

@@ -1,0 +1,17 @@
+[project]
+name = "quasisep-paper"
+version = "0.1.0"
+description = "Add a short description here"
+authors = ["Dan F-M <foreman.mackey@gmail.com>"]
+channels = ["conda-forge", "bioconda"]
+platforms = ["osx-64", "osx-arm64", "linux-64"]
+
+[tasks]
+build = { cmd = ["snakemake", "--cores", "all"] }
+
+[dependencies]
+mystmd = ">=1.1.50,<1.2"
+nodejs = ">=20,<21"
+tectonic = ">=0.15.0,<0.16"
+snakemake = ">=8.10.4,<8.11"
+python = ">=3.12.2,<3.13"
