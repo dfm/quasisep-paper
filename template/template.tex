@@ -41,7 +41,7 @@
 \renewcommand{\footnote}[1]{\refstepcounter{marginnote}\textsuperscript{\themarginnote}\marginpar{\color{darkgray}\raggedright\footnotesize\textsuperscript{\themarginnote}#1}}
 \newcommand{\tfigurerule}{\rule{0pt}{1ex}\\ \rule{\marginparwidth}{0.5pt}\\ \rule{0pt}{0.25ex}}
 \newcommand{\bfigurerule}{\rule{0pt}{0.25ex}\\ \rule{\marginparwidth}{0.5pt}\\ \rule{0pt}{1ex}}
-\renewcommand{\caption}[1]{\parbox{\marginparwidth}{\footnotesize\refstepcounter{figure}\textbf{\figurename~\thefigure}: {#1}}}
+\renewcommand{\caption}[2][]{\parbox{\marginparwidth}{\footnotesize\refstepcounter{figure}\textbf{\figurename~\thefigure}: {#2}}}
 
 \setlength{\oddsidemargin}{0.5\paperwidth}
 \addtolength{\oddsidemargin}{-1.0in}

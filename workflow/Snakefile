@@ -5,12 +5,12 @@ BUILD = Path("_build")
 rule all:
     input:
         expand(BUILD / "{docname}.pdf", docname=["quasisep"])
-        # expand(BUILD / "{docname}_tex", docname=["quasisep"])
 
 rule tex:
     input:
-        "src/{docname}.md",
-        "src/{docname}.bib"
+        "doc/{docname}.md",
+        "doc/{docname}.bib",
+        "doc/figures/demo.pdf",
     output:
         BUILD / "{docname}.tex"
     params:
@@ -18,7 +18,7 @@ rule tex:
     shell:
         """
         myst build {input[0]} --tex
-        cp -r src/_build/exports/{wildcards.docname}_tex/* {params.build_dir}/
+        cp -r doc/_build/exports/{wildcards.docname}_tex/* {params.build_dir}/
         """
 
 rule pdf:
@@ -30,3 +30,11 @@ rule pdf:
         """
         tectonic {input} --keep-logs --keep-intermediates
         """
+
+rule figure:
+    input:
+        "scripts/demo.py"
+    output:
+        "doc/figures/demo.pdf"
+    shell:
+        "python {input} {output}"

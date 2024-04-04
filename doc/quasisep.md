@@ -18,7 +18,7 @@ math:
 
 +++ {"part": "acknowledgments"}
 
-Many thanks to the Astronomical Data Group at the Center for Computational Astrophysics for many helpful discussions.
+The authors would like to thank the Astronomical Data Group at the Center for Computational Astrophysics for listening to every iteration of this project and for providing great feedback every step of the way.
 
 +++
 
@@ -37,6 +37,13 @@ The quasiseparable kernels built in to `tinygp` are all designed to be used with
 In this tutorial, we present some examples of the kinds of extensions that are possible within this framework.
 This will be one of the most technical `tinygp` tutorials, and the implementation details are likely to change in future versions; you have been warned!
 
+```{figure} figures/demo.pdf
+:name: demo
+:width: 90%
+:align: center
+
+There exist a range of definitions for _quasiseparable matrices_ in the literature, so to be explicit, let's select the one that we will consider in all that follows.
+```
 
 # Quasiseparable matrices
 
